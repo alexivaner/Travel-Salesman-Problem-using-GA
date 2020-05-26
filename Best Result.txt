@@ -1,0 +1,61 @@
+Best setting for 42 cities:
+
+EV3:
+  populationSize: 15
+  generationCount: 1000
+  crossoverFraction: 0.5
+  randomSeed: 1234
+  startCity: 1
+  learningRate: 3.0
+  cityCoordinat: coordinat.out
+  weightData: weight42.out 
+  Hasil======================961
+  Best==============699
+  
+Best setting for 5 cities:
+EV3:
+  populationSize: 25
+  generationCount: 25
+  crossoverFraction: 0.5
+  randomSeed: 1234
+  minLimit: -1.0
+  maxLimit:  1.0
+  startCity: 1
+  learningRate: 3
+  cityCoordinat: coordinat.out
+  weightData: weight5.out 
+  Hasil ===================== 19
+  Best===========19
+  
+Best setting for 15 cities
+EV3:
+  populationSize: 5
+  generationCount: 1000
+  crossoverFraction: 0.5
+  randomSeed: 1234
+  minLimit: -1.0
+  maxLimit:  1.0
+  startCity: 1
+  learningRate: 6
+  cityCoordinat: coordinat.out
+  weightData: weight15.out 
+  Hasil ===================== 323
+  Best===========291
+  
+
+Best setting for 17 cities
+EV3:
+  populationSize: 21
+  generationCount: 1000
+  crossoverFraction: 0.5
+  randomSeed: 1234
+  minLimit: -1.0
+  maxLimit:  1.0
+  startCity: 1
+  learningRate: 0.8
+  cityCoordinat: coordinat.out
+  weightData: weight17.out 
+ 
+	Hasil ===================== 2103
+  Best===========2085
+  
