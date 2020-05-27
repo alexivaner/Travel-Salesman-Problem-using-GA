@@ -127,7 +127,7 @@ def plotTSP(paths, points, num_iters=1):
     
     plt.plot(x, y, 'co')
     plt.title("Optimized Tour")
-    a_scale = float(max(x))/float(8)
+    a_scale = float(max(x))/float(100)
     
     for i in range(len(paths[0])):
         plt.annotate(i+1, (points[i][0], points[i][1]),fontsize=13,verticalalignment='top')
