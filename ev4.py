@@ -94,12 +94,12 @@ def printStats(pop,gen):
     print('Generation:',gen)
     avgval=0
     minval=pop[0].fit 
-    sigma=pop[0].sigma
+    sigma=pop[0].mutRate[0]
     for ind in pop:
         avgval+=ind.fit
         if ind.fit < minval:
             minval=ind.fit
-            sigma=ind.sigma
+            sigma=ind.mutRate[0]
         print(ind)
 
     print('Min fitness',minval)
@@ -185,6 +185,7 @@ def ev3(cfg):
     Individual.numberofCity=len(cfg.weightData)
     Individual.weightdata=cfg.weightData
     Individual.learningRate=cfg.learningRate
+    Individual.crossoverFraction=cfg.crossoverFraction
     Population.uniprng=uniprng
     Population.crossoverFraction=cfg.crossoverFraction
     Population.startCity=cfg.startCity

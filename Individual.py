@@ -24,19 +24,32 @@ class Individual:
     weightdata=None
     populationSize=None
     var=None
+    crossoverFraction=None
     
         
 
     def __init__(self):
         self.x=CityPath()
         self.fit=self.__class__.fitFunc(self.x)
-        self.sigma=self.uniprng.uniform(1/self.populationSize,1/self.numberofCity) #use "normalized" sigma
-        
+        # self.sigma=self.uniprng.uniform(1/self.populationSize,1/self.numberofCity) #use "normalized" sigma
+        self.mutRate=[]
+        for i in range(self.numberofCity):
+            self.mutRate.append(self.uniprng.uniform(0.9,0.1)) #use "normalized" sigma
+    
+    def mutateMutRate(self):
+        if isinstance(self.mutRate,list):
+            for i in range(len(self.mutRate)):
+                #this is slightly simplified implementation compared w/ Eiben textbook equations
+                self.mutRate[i]=self.mutRate[i]*math.exp(self.learningRate*self.normprng.normalvariate(0,1))
+                if self.mutRate[i] < self.minSigma: self.mutRate[i]=self.minSigma
+                if self.mutRate[i] > self.maxSigma: self.mutRate[i]=self.maxSigma        
+            
+            
     def crossover(self, other):
         
         for a in range(0,len(self.x)):
-            alpha=self.uniprng.uniform(0,1)
-            probability=0.5
+            alpha=self.uniprng.random()
+            probability=1.0
             
             if(alpha<probability):
                 self.x[a], other.x[a] = other.x[a], self.x[a]
@@ -62,32 +75,34 @@ class Individual:
 
     
     def mutate(self):
-        self.sigma=self.sigma*math.exp(self.learningRate*self.normprng.normalvariate(0,1))
-        if self.sigma < 1/self.populationSize: 
-            self.sigma=(1/self.populationSize)
-            #self.sigma=self.minSigma
+        self.mutateMutRate()
+        # self.sigma=self.sigma*math.exp(self.learningRate*self.normprng.normalvariate(0,1))
+        
+        # if self.sigma < 1/self.populationSize: 
+            # self.sigma=(1/self.populationSize)
+            # #self.sigma=self.minSigma
 
-        if self.sigma > 1/self.numberofCity: 
-            self.sigma=(1/self.numberofCity)
-            #self.sigma=self.maxSigma
+        # if self.sigma > 1/self.numberofCity: 
+            # self.sigma=(1/self.numberofCity)
+            # #self.sigma=self.maxSigma
 
+        for a in range(len(self.mutRate)):
+            if self.uniprng.uniform(0,1)<self.mutRate[a]: #randomprobability of mutation
+                if (self.startCity==0):
+                    mutationindex=self.uniprng.randint(1,self.numberofCity-1)   
+                    self.x[mutationindex]=self.uniprng.randint(0,self.numberofCity-1)
 
-        if self.uniprng.uniform(0,1)<self.sigma: #randomprobability of mutation
-            if (self.startCity==0):
-                mutationindex=self.uniprng.randint(0,self.numberofCity-1)
-                self.x[mutationindex]=self.uniprng.randint(0,self.numberofCity-1)
+                else:
+                    mutationindex=self.uniprng.randint(1,self.numberofCity-1)   
+                    self.x[mutationindex]=self.uniprng.randint(1,self.numberofCity-1)
+                differ=self.diff(self.x)
 
-            else:
-                mutationindex=self.uniprng.randint(1,self.numberofCity-1)   
-                self.x[mutationindex]=self.uniprng.randint(1,self.numberofCity-1)
-            differ=self.diff(self.x)
-
-            if len(differ)!=0:
-                samevalindex=self.list_duplicates_of(self.x.x, self.x[mutationindex])
-                samevalindex.remove(mutationindex)
-                self.x[samevalindex[0]]=differ[0]
-           
-        self.fit=None
+                if len(differ)!=0:
+                    samevalindex=self.list_duplicates_of(self.x.x, self.x[mutationindex])
+                    samevalindex.remove(mutationindex)
+                    self.x[samevalindex[0]]=differ[0]
+               
+            self.fit=None
         
     def diff(self,second):
         first =set(list(range(0, self.numberofCity)))
@@ -112,7 +127,7 @@ class Individual:
         
     def __repr__(self):
         ar = numpy.array(self.x)
-        return str(ar+1)+'\t'+str(self.fit)+'\t'+str(self.sigma)
+        return str(ar+1)+'\t'+str(self.fit)+'\t'+str(self.mutRate[0])
 
     
 class CityPath(Individual):
