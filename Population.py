@@ -40,7 +40,6 @@ class Population:
             
     def evaluateFitness(self,pobj):
         states=[ind.x for ind in self.population]
-        print(states)
         fitnesses=pobj.map(Worker.evaluateFitnessPool,states)
         for i in range(len(self.population)): self.population[i].fit=fitnesses[i]
         #for individual in self.population: individual.evaluateFitness()           
