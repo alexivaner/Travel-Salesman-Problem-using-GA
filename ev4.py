@@ -163,10 +163,12 @@ def plotGraph(path1, cityCoordinat):
     # Run the function
     plotTSP(paths, res)       
          
+def initClassVars(cfg):
+    Worker.weightdata=cfg.weightData
 
- #EV3:
+#EV3:
 #            
-def ev3(cfg):
+def ev3(cfg,pobj):
 
     #start random number generators
     uniprng=Random()
@@ -214,7 +216,7 @@ def ev3(cfg):
         offspring.mutate()
         
         #update fitness values
-        offspring.evaluateFitness()        
+        offspring.evaluateFitness(pobj)        
             
         #survivor selection: elitist truncation using parents+offspring
         population.combinePops(offspring)
@@ -256,14 +258,17 @@ def main(argv=None):
         
         #Get EV3 config params
         cfg=EV3_Config(options.inputFileName)
-        
+        pobj=Pool(initializer=initClassVars,initargs=(cfg,))
+
+        #Don't forget, we also need to init the master process cfg class vars!
+        initClassVars(cfg)
         
         plot_result(cfg.cityCoordinat)
         #print config params
         print(cfg)
                     
         #run EV3
-        ev3(cfg)
+        ev3(cfg,pobj)
         
         
         if not options.quietMode:                    
