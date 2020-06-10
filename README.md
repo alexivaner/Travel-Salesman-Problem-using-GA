@@ -3,8 +3,11 @@
 
 ## How to use?
 You could examine the code detailly using ipnyb files. 
+
 To run using console you can use "python ev4.py --input ev3a_example.cfg"
+
 you could modify the detail like learning rate, population, and generation in "ev3a_example.cfg"
-If you would know the best result I already found, you can use setting from "Best_result.txt"
+
+If you would know the best result we already found, you can use setting from "Best_result.txt"
 
 This code is still under development as requirement for final project of Evolutionary Computational courses

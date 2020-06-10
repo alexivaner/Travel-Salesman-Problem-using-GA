@@ -20,6 +20,7 @@ from Population import *
 import re
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 
 
@@ -197,6 +198,8 @@ def ev3(cfg):
     printStats(population,0)
 
     #evolution main loop
+    start_time = time.time()
+
     for i in range(cfg.generationCount):
         #create initial offspring population by copying parent pop
         offspring=population.copy()
@@ -225,7 +228,10 @@ def ev3(cfg):
                 
         plt.pause(0.001)
         plt.clf()
-     
+    
+    elapsed_time2 = time.time() - start_time
+    print("With pooling: ",elapsed_time2,'second')
+    print(population.population[0].x)
     plt.show()
 #
 # Main entry point
