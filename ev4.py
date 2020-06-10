@@ -231,7 +231,7 @@ def ev3(cfg):
     
     elapsed_time2 = time.time() - start_time
     print("With pooling: ",elapsed_time2,'second')
-    print(population.population[0].x)
+    print([a+1 for a in population.population[0].x])
     plt.show()
 #
 # Main entry point
