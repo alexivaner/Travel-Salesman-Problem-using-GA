@@ -30,7 +30,7 @@ EV3:
 Best setting for 15 cities
 EV3:
   populationSize: 5
-  generationCount: 500
+  generationCount: 350
   crossoverFraction: 0.2
   randomSeed: 1234
   minLimit: -1.0

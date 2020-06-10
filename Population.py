@@ -59,6 +59,7 @@ class Population:
         self.uniprng.shuffle(indexList1)
         self.uniprng.shuffle(indexList2)
 
+
         if self.crossoverFraction == 1.0:             
             for index1,index2 in zip(indexList1,indexList2):
                 self[index1].crossover(self[index2])
