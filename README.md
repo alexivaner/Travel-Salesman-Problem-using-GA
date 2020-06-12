@@ -1,6 +1,15 @@
 # Travel-Salesman-Problem-using-GA
  This the code for search solution from Travel Salesman Problem. Travel Salesman Problem is a problem where we given numbers of city to visit, we should initiate where the starting point and visitting every city before going back to the start with the fastest and maybe cheapest route. Here I use Genetic Algorithm to solve this kind of problem.
-
+ 
+ ## Real Time Demo
+ ### 15Cities
+  ![Screenshot2]( https://github.com/alexivaner/Travel-Salesman-Problem-using-GA/blob/master/DemoVideo/15%20Cities.gif)
+  
+ ### 42 cities
+  ![Screenshot2]( https://github.com/alexivaner/Travel-Salesman-Problem-using-GA/blob/master/DemoVideo/42%20cities.gif)
+ <br>
+ <br>
+ 
 ## How to use?
 You could examine the code detailly using ipnyb files. 
 
@@ -39,11 +48,4 @@ In this chance, I just worked for Genetic Algorithm, for Particle Swarm Optimiza
   ![Screenshot2](https://github.com/alexivaner/Travel-Salesman-Problem-using-GA/blob/master/Images%20Explanation/Slide10.JPG)
  <br>
  
- ## Real Time Demo
- ### 15Cities
-  ![Screenshot2]( https://github.com/alexivaner/Travel-Salesman-Problem-using-GA/blob/master/DemoVideo/15%20Cities.gif)
-  
- ### 42 cities
-  ![Screenshot2]( https://github.com/alexivaner/Travel-Salesman-Problem-using-GA/blob/master/DemoVideo/42%20cities.gif)
- <br>
- <br>
+
