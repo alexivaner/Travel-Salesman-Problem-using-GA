@@ -40,10 +40,10 @@ In this chance, I just worked for Genetic Algorithm, for Particle Swarm Optimiza
  <br>
  
  ## Real Time Demo
- 15Cities
+ ### 15Cities
   ![Screenshot2]( https://github.com/alexivaner/Travel-Salesman-Problem-using-GA/blob/master/DemoVideo/15%20Cities.gif)
   
- 42 cities
+ ### 42 cities
   ![Screenshot2]( https://github.com/alexivaner/Travel-Salesman-Problem-using-GA/blob/master/DemoVideo/42%20cities.gif)
  <br>
  <br>
